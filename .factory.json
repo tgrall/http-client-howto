@@ -1,0 +1,145 @@
+{
+  "v": "4.0",
+  "name": "http-client-howto-vertx",
+  "workspace": {
+    "defaultEnv": "java",
+    "environments": {
+      "java": {
+        "machines": {
+          "ws-machine": {
+            "attributes": {
+              "memoryLimitBytes": "2147483648"
+            },
+            "servers": {
+              "8080/tcp": {
+                "attributes": {},
+                "port": "8080",
+                "protocol": "http"
+              }
+            },
+            "volumes": {},
+            "installers": [
+              "org.eclipse.che.ls.java",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.exec"
+            ],
+            "env": {
+              "CHE_MACHINE_NAME": "ws-machine"
+            }
+          }
+        },
+        "recipe": {
+          "type": "dockerimage",
+          "content": "registry.devshift.net/che/centos_jdk8"
+        }
+      }
+    },
+    "projects": [
+      {
+        "links": [],
+        "name": "http-client-howto-vertx",
+        "attributes": {
+          "maven.artifactId": [
+            "http-client-howto"
+          ],
+          "maven.parent.version": [
+            ""
+          ],
+          "maven.test.source.folder": [
+            ""
+          ],
+          "maven.version": [
+            "1.0.0-SNAPSHOT"
+          ],
+          "maven.parent.groupId": [
+            ""
+          ],
+          "languageVersion": [
+            "1.8.0_45"
+          ],
+          "contribute_mode": [
+            "contribute"
+          ],
+          "contribute": [],
+          "language": [
+            "java"
+          ],
+          "pull_request_id": [],
+          "maven.source.folder": [
+            "src/main/java"
+          ],
+          "git.repository.remotes": [
+            "https://github.com/tgrall/http-client-howto.git"
+          ],
+          "maven.groupId": [
+            "io.vertx.howtos"
+          ],
+          "maven.packaging": [
+            "jar"
+          ],
+          "containsJavaFiles": [
+            "true"
+          ],
+          "vcs.provider.name": [
+            "git"
+          ],
+          "maven.resource.folder": [],
+          "git.current.branch.name": [
+            "master"
+          ],
+          "contribute_branch": [
+            "master"
+          ],
+          "maven.parent.artifactId": [
+            ""
+          ]
+        },
+        "type": "maven",
+        "source": {
+          "location": "https://github.com/tgrall/http-client-howto.git",
+          "type": "git",
+          "parameters": {}
+        },
+        "path": "/http-client-howto",
+        "description": "",
+        "problems": [],
+        "mixins": [
+          "git"
+        ]
+      }
+    ],
+    "name": "http-client-howto",
+    "attributes": {},
+    "commands": [
+      {
+        "commandLine": "mvn -f ${current.project.path} clean install && cp ${current.project.path}/target/*.war $TOMCAT_HOME/webapps/ROOT.war 2>&1",
+        "name": "build",
+        "attributes": {
+          "goal": "Build",
+          "previewUrl": ""
+        },
+        "type": "mvn"
+      }
+    ],
+    "links": []
+  },
+  "ide": {
+    "onProjectsLoaded": {
+      "actions": [
+        {
+          "properties": {
+            "name": "build"
+          },
+          "id": "runCommand"
+        },
+        {
+          "properties": {
+            "file": "/http-client-howto/src/main/java/io/vertx/howtos/httpclient/JokeVerticle.java"
+          },
+          "id": "openFile"
+        }
+      ]
+    }
+  }
+}
